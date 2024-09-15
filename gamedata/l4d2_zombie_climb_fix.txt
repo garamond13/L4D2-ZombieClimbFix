@@ -1,0 +1,30 @@
+"Games"
+{
+	"left4dead2"
+	{
+		"Addresses"
+		{
+			"nearby"
+			{
+				"signature" "nearby"
+			}
+		}
+
+		"Signatures"
+		{    
+			"nearby"
+			{
+				"library" "server"
+				"windows" "\x56\x8B\xF1\x8B\x06\x8B\x90\x2A\x2A\x2A\x2A\xFF\xD2\x84\xC0\x74\x2A\x8B\x06\x8B\x90\x2A\x2A\x2A\x2A\x8B\xCE\xFF\xD2\x84\xC0\x75\x2A\x8B\x06"
+			}
+		}
+
+		"Offsets"
+		{
+			"ILocomotion::GetTraversableSlopeLimit_return_val"
+			{
+				"windows" "226"
+			}
+		}
+	}
+}
