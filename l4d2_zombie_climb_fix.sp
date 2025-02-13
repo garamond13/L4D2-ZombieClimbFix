@@ -4,10 +4,12 @@
 #pragma semicolon 1
 #pragma newdecls required
 
-#define VERSION "1.1.0"
+#define VERSION "1.2.0"
+
+#define DEV 0
 
 // Default 0.6
-#define TRAVERSABLE_SLOPE_LIMIT 0.35
+#define TRAVERSABLE_SLOPE_LIMIT 0.4
 
 MemoryBlock block;
 
@@ -31,4 +33,18 @@ public void OnPluginStart()
 	// Set new return value for `float ILocomotion::GetTraversableSlopeLimit()`.
 	block.StoreToOffset(0, view_as<int>(TRAVERSABLE_SLOPE_LIMIT), NumberType_Int32);
 	StoreToAddress(return_val, view_as<int>(block.Address), NumberType_Int32);
+
+	#if DEV
+	RegConsoleCmd("setslope", command_setslope);
+	#endif
 }
+
+#if DEV
+Action command_setslope(int client, int args)
+{
+	char arg[20];
+	GetCmdArg(1, arg, sizeof(arg));
+	block.StoreToOffset(0, view_as<int>(StringToFloat(arg)), NumberType_Int32);
+	return Plugin_Handled;
+}
+#endif
